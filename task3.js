@@ -13,7 +13,7 @@
 // 6. Return the final sum. Output: 6
 
 function sumParameters(...number){
-    return number.reduce((acc,num)=>acc+num,0)
+    return number.reduce ((acc, num) => acc + num, 0)
 }
 let sumOfNumbers = sumParameters (1,2,3)
 console.log (sumOfNumbers)

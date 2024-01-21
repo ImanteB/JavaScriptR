@@ -1,0 +1,201 @@
+/*Krepšininkų uždavinys
+Duota:
+Rasti:
+1. Raskite vidutinį krepšininkų ūgį? ATS.: 202.2
+2. Raskite kiek krepšininkų yra didesnių už vidutinį krepšininkų ūgį? ATS.: 2
+3. Raskite aukščiausio krepšininko dvitaškių skaičių? ATS.: 14
+4. Raskite žemiausio krepšininko tritaškių skaičių ir marškinėlių nr.? ATS.: 2 ir 69 */
+
+let komanda = [
+    {
+        krepsininkai: 23,
+        ugiai: 211,
+        dvitaskiai: 15, 
+        tritaskiai: 2
+    },
+ 
+    {
+        krepsininkai: 9,
+        ugiai: 195,
+        dvitaskiai: 20, 
+        tritaskiai: 5
+    },
+ 
+    {
+        krepsininkai: 11,
+        ugiai: 199,
+        dvitaskiai: 98, 
+        tritaskiai: 6
+    },
+    {
+        krepsininkai: 57,
+        ugiai: 215,
+        dvitaskiai: 14, 
+        tritaskiai: 1
+    },
+    {
+        krepsininkai: 69,
+        ugiai: 191,
+        dvitaskiai: 48, 
+        tritaskiai: 2  
+    }
+ 
+]
+//1var
+let sum=0;
+for(let i=0; i<komanda.length; i++){
+    sum=sum + komanda[i].ugiai;
+}
+let average = sum/komanda.length;
+console.log(average);
+
+//2var.
+let sum =krepsininkai.reduce((total,item)=> {
+  console.log(total)
+  console.log(item.ugis)
+  return total+item.ugis
+},0)
+
+//2.Raskite kiek krepšininkų yra didesnių už vidutinį ūgį? ats.:2
+let count=0;
+for (let i=0; i < komanda.length; i++){
+  if(komanda[i].ugiai > average){
+  count++;
+  }
+}
+console.log(count);
+
+
+/2var:
+const aukstaugiaiKomandoje = komanda.filter((krepsininkas) =>krepsininkas.ugiai> average);
+console.log(aukstaugiaiKomandoje.length)
+
+
+
+
+//3. Raskite aukščiausio krepšininko dvitaškių skaičių? ats.: 14
+//1 var.
+let ugis = [211, 195, 199, 215, 191];
+let dvitaskiai = [15, 20, 98, 14, 48];
+
+let maxUgis = komanda[0].ugiai;
+let dvitaskiaiOfMaxUgis = komanda[0].dvitaskiai;
+
+for (let i = 1; i < komanda.length; i++) {
+  if (komanda[i].ugiai > maxUgis) {
+    maxUgis = komanda[i].ugiai;
+    dvitaskiaiOfMaxUgis = i;
+  }
+}
+console.log(dvitaskiai[dvitaskiaiOfMaxUgis]);
+
+
+
+//4. Raskite žemiausio krepšininko tritaškių skaičių ir marškinėlių nr.? ats.:2 ir 69
+let krepsininkai = [23, 9, 11, 57, 69];
+let tritaskiai = [2, 5, 6, 1, 2];
+let ugiai = [211, 195, 199, 215, 191];
+
+const min = Math.min(komanda[0].ugiai);
+const index = komanda[i].ugiai.indexOf(min);
+console.log('žemiausio krepšininko tritaškių skaičius = '+tritaskiai[index]+ ''+'ir marškinėlių nr = '+krepsininkai[index])
+
+
+//2 variantas
+const min = Math.min(...ugiai);
+const index = ugiai.indexOf(min);
+console.log('žemiausio krepšininko tritaškių skaičius = '+ tritaskiai[index]+' '+'ir marškinėlių nr = '+krepsininkai[index])
+
+
+
+
+/destytojos:
+let krepsininkai = [
+  {
+    vardas: "Jonas",
+    numeris: 23,
+    ugis: 211,
+    dvitaskiai: 15,
+    tritaskiai: 2
+  },
+  {
+    vardas: "Antanas",
+    numeris: 9,
+    ugis: 195,
+    dvitaskiai: 20,
+    tritaskiai: 5
+  },
+  {
+    vardas: "Petras",
+    numeris: 11,
+    ugis: 199,
+    dvitaskiai: 98,
+    tritaskiai: 6
+  },
+  {
+    vardas: "Antanas3",
+    numeris: 9,
+    ugis: 195,
+    dvitaskiai: 20,
+    tritaskiai: 5
+  },
+  {
+    vardas: "Olegas",
+    numeris: 57,
+    ugis: 215,
+    dvitaskiai: 14,
+    tritaskiai: 1
+  },
+  {
+    vardas: "Jurgis",
+    numeris: 69,
+    ugis: 191,
+    dvitaskiai: 48,
+    tritaskiai: 2
+  }];
+
+// console.log(krepsininkai);
+// let sum = krepsininkai[0].ugis + krepsininkai[1].ugis + krepsininkai[2].ugis...
+
+// 1 klasė
+// let sum1 = 0;
+// for(let i=0; i<krepsininkai.length; i++){
+//   sum1 = sum1 + krepsininkai[i].ugis;
+// }
+
+// 2 klasė
+// arr.reduce(p1(funkcija), p2(0))
+let sum2 = krepsininkai.reduce( (total, item) => {
+  console.log("Sum = " + total);
+  console.log("Ugis = " + item.ugis);
+  console.log("---------------------");
+  return total + item.ugis;
+}, 0);
+
+console.log("Vidurkis (ugiu): " + sum / krepsininkai.length);
+
+
+// 2 klasė - jeigu reiktų dvitaškių skaičiuoti sumą???
+let sum3 = krepsininkai.reduce( (total, item) => {
+  console.log("Sum = " + total);
+  console.log("Dvitaskiai = " + item.dvitaskiai);
+  console.log("---------------------");
+  return total + item.dvitaskiai;
+}, 0);
+
+console.log(sum3);
+
+//*Atspausdinti visus krepšininkus į sąrašą. 
+//1 klasė - for
+////2 klasė - forEach
+///Krepšininkas, markšinėlių nr.: 15, ūgis: 211, dvitaškiai: 15, tritaškiai: 5;Kreptininkas, .... *//
+
+//1klausimas...
+//o klase:
+console.log(krepsininkai) - gauname visa masyva skirtingu objektu.
+//1klase:
+for (let i=0; i<krepsininkai.length i++){
+  console.log("Krepsininkas, marskineliu nr: "+krepsininkai[i].numeris+ "; ugis: "krepsininkai[i].ugis )
+}
+//2klase: 
+krepsininkai.forEach((krepsininkas) => console.log("Krepsininkas, marskineliu nr: "+ krepsininkas.numeris+ "; ugis: "krepsininkas.ugis ));

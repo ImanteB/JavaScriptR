@@ -1,0 +1,148 @@
+//Sukurti tuščią objektą pavadinimu sandėlis. 
+//Pridėti tokius raktus ir reikšmes: staliniai kompiuteriai - 30, nešiojami kompiuteriai - 35, išorinės duomenų laikmenos - 125. 
+//Sukurti kitą objektą (pvz. sandėlioArchyvas), kuris saugotų objekto sandėlis kopiją. 
+//Pakeisti objekto sandėlis rakto, nešiojami kompiuteriai, reikšmę į 33. 
+//Pašalinti objekto sandėlis staliniai kompiuteriai raktą ir reikšmę. Atspausdinti objektą sandėlis ir objektą sandėlioArchyvas. Ar jie lygūs? Kodėl?
+
+let sandelis = {
+   nesiojamiKompiuteriai:35,
+   staliniaiKompiuteriai:30,
+   laikmenos:125
+};
+   
+let sandelioArchyvas = {...sandelis}; arba Object.assign(sandelioArchyvas)
+
+sandelis.nesiojamiKompiuteriai = 33;
+
+delete sandelis.staliniaiKompiuteriai;
+console.log(sandelis);
+console.log(sandelioArchyvas);
+console.log(sandelioArchyvas==sandelis) lygus ar ne (false)
+
+//Sukurti objektą, kuris saugo informaciją apie knygą. Pvz.:
+Autorius: Abigal Dean
+Leidėjas: Alma littera
+Metai: 2021
+Puslapiai: 384
+Kalba: Lietuvių
+Įvertinimas: 4.5/5
+//Atspausdinti visas objekto reikšmes. Naudoti ciklą for..in.
+//a. Sukurti funkciją printInfo(obj), kuri atspausdina informaciją apie knygą.
+//b. Sukurti kelis knygų objektus, sudėti juos į masyvą ir atspausdinti, panaudojant prieš tai sukurtą funkciją printInfo(obj).
+
+let knyga = {
+    autorius: "Abigal Dean",
+    leidejas: "Alma littera",
+    metai: 2021,
+    puslapiai: 384,
+    kalba: "Lietuvių",
+    ivertinimas: [4.5, 5]
+};
+
+for (let key in knyga) {
+     console.log (`${key} : ${knyga[key]}`);
+    } ;
+
+function printObj(obj) {
+      for (let key in obj) {
+        console.log(`${key} : ${obj[key]}`);  
+    } 
+} 
+    printObj(knyga);
+
+    let knyga2=  {
+    autorius: "Abigal Dean",
+    leidejas: "Grazioji littera",
+    metai: 1999,
+    puslapiai: 3500,
+    kalba: "Anglu",
+    ivertinimas: [6.5, 5]
+};
+
+let knyga3 = 
+{autorius: "Alchemikas",
+leidejas: "Vaga",
+metai: 2000,
+puslapiai: 184,
+kalba: "Vokieciu",
+ivertinimas: [4.5, 5]
+};
+
+let sandelis = [knyga,knyga2, knyga3]
+function printAllBooks(arr){
+    arr.forEach ((knyga)=> printObj(knyga));
+}
+printAllBooks(sandelis)
+
+
+//Sukurti objektą algos, kuriame išsaugoti šias reikšmes: Jonas - 300, Petras - 400, Rasa - 500. 
+//Apskaičiuoti ir atspausdinti visų darbuotojų algų bendrą sumą.
+//Sukurti funkciją, kuri apskaičiuoja visų darbuotojų algų bendrą sumą.
+//Sukurti kelių įmonių darbuotojų algų sąrašus-objektus. 
+//Darbuotojų skaičius turi būti skirtingas. Sudėti visus įmonių darbuotojų sąrašus į masyvą. 
+//Atspausdinti kiekvienos įmonės darbuotojų algų bendrą sumą.
+//Apskaičiuoti kiek iš viso įmonės skirs algoms.
+
+
+let alga =  {
+    Jonas: 300,
+    Petras: 400,
+    Rasa: 500
+}
+
+let sumDarbuotojuAtlyginimas= Object.entries(alga).reduce ((total, [key,value]) => {
+   return  total + value;
+}, 0);
+console.log(sumDarbuotojuAtlyginimas);
+//arba
+let sum = 0
+function sumDarbuotojuAtlyginimas1 (atlyginimas) {
+   for (let key in alga){
+    sum = sum + alga[key];
+   } 
+   console.log(sum);
+}
+sumDarbuotojuAtlyginimas1(alga)
+
+let algaVilnius =  {
+    Jonas: 300,
+    Petras: 400,
+    
+};
+
+let algaKaunas =  {
+    Jonas: 300,
+    Petras: 400,
+    Rasa: 500,
+    Darius: 500
+}
+
+let algaKlaipeda =  {
+    Jonas: 300,
+    Jons: 300,
+    Pranas: 400,
+    Ruta: 500,
+    Daiva: 500
+}
+
+
+let lietuvosDarbuotojai = [algaKlaipeda,algaKaunas, algaVilnius, alga];
+
+lietuvosDarbuotojai.forEach(( imonex) => sumDarbuotojuAtlyginimas1(imonex));
+
+
+
+
+let totalLietuva = Object.entries(lietuvosDarbuotojai).reduce (( total,[key, value]) => {
+    return total +value;
+},0)
+console.log(totalLietuva)
+
+
+
+
+
+
+
+
+

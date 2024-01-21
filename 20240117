@@ -1,0 +1,146 @@
+//1 uzdav. console.log(volumeOfBox({witdth:2, length: 5, height: 1})) - 10//
+let figura ={
+  witdth:2,
+  length: 5,
+  height: 1 
+}
+
+function volumeOfBox (box){
+  retun (box.witdth * box.length * box.height)
+}
+console.log(volumeOfBox(figura)) 
+
+
+//2uzdavin console.log(isInRange(4,{min:0, max:5})) - true//
+let range = {
+    min: 0,
+    max: 5
+};
+
+function isInRange(num, obj) {
+    return num >= range.min && num <= range.max;
+}
+let number = 4;
+console.log(isInRange(number,range));
+
+
+//arba//
+function isInRange (num, range) {
+    if (num >= range.min && num <= range.max) {
+    return true
+    }
+    else {return false}
+}
+console.log (isInRange (4, {min: 0, max:5}));
+
+//arba//
+function isInRange(num, range) {
+  return num >= range.min  && num <= range.max ;
+}
+
+console.log(isInRange(4, { min: 0, max: 5 })); 
+console.log(isInRange(4, { min: 4, max: 5 })); 
+console.log(isInRange(4, { min: 6, max: 10 })); 
+console.log(isInRange(5, { min: 5, max: 5 }));
+
+
+//3 uzdav//
+//Perskaitytų knygų sąrašas (funkcijos, objektai, masyvai)
+Due today at 11:59 PM
+Instructions//
+
+let books = [
+    {
+        pavadinimas: "Smarkuolė Gilė Hopkins",
+        puslapiai: 60
+    },
+    {
+        pavadinimas: "Alisa Stebuklų šalyje",
+        puslapiai: 192
+    },
+    {
+        pavadinimas: "Jurgelis miškauja",
+        puslapiai: 112
+    },
+    {
+        pavadinimas: "Paslaptingas drakonas",
+        puslapiai: 102
+    },
+    {
+        pavadinimas: "Penktoji šlepetė plius",
+        puslapiai: 200
+    }
+]
+
+Sukurti funkcijas:
+1. printBook(book) - atspausdina vienos knygos duomenis;
+function printBook(book){
+    console.log("Knygos pavadinimas: " + book.pavadinimas + "puslapių skaičius: " + book.puslapiai)
+}
+printBook (books[2])
+
+
+
+
+2. printAllBooks(arr) - atspausdina visas knygas;
+books.forEach ((book)=> 
+console.log("Knygos pavadinimas: " + book.pavadinimas + ", puslapių skaičius: " + book.puslapiai));
+
+//arba galima panaudoti gauta atsakyma is pirmo uzd.//
+books.forEach ( (book) => printBook(book));
+
+3. getBooksCount(arr) - grąžina perskaitytų knygų skaičių;
+function getBooksCount(books) {
+    let count = 0;
+
+    for (let i = 0; i < books.length; i++) {
+        if (books[i].puslapiai > 0) {
+            count++;
+        }
+    }
+    return count;
+}
+console.log(getBooksCount(books)); 
+
+//arba//
+function getBooksCount(books) {
+    return books.length;
+}
+console.log(getBooksCount(books)); 
+
+
+4. getTotalNumberOfPages(arr) - grąžina perskaitytų knygų puslapių skaičių;
+
+let sumOfBooks = books.reduce( (total, item) => {
+  return total + item.puslapiai;
+}, 0);
+console.log(sumOfBooks);
+
+
+5. getMaxPages(arr) - grąžina knygą, kuri turi daugiausiai puslapių;
+
+function getMaxPages(arr){
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i].puslapiai > max.puslapiai) {
+            max = arr[i];
+        }
+    }
+   return max;}
+   console.log((getMaxPages(books)))
+
+   //arba galima jau is pirmos uzdaties paiimti//
+printBook (getMaxPages(books))
+
+6. getAvgNumberOfPages(arr) - grąžina perskaitytų knygų puslapių vidurkį.
+
+function getAvgNumberOfPages(arr){
+    let pages = getTotalNumberOfPages(arr);
+    return pages / arr.length;
+}
+
+
+
+
+
+
